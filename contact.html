@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Magic Mirror Events</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- ===================== NAVBAR ===================== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Magic Mirror</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    </nav>
+  </header>
+
+  <!-- ===================== CONTACT FORM ===================== -->
+  <section class="contact-section">
+    <div class="container">
+      <h2>Contactează-ne</h2>
+      <p>Completează formularul de mai jos pentru a solicita o ofertă personalizată.</p>
+
+      <form class="contact-form">
+        <!-- câmpuri de bază pentru ofertă -->
+        <label for="name">Nume complet</label>
+        <input type="text" id="name" placeholder="Ex: Andreea & Mihai" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="exemplu@email.com" required>
+
+        <label for="date">Data evenimentului</label>
+        <input type="date" id="date" required>
+
+        <label for="message">Mesaj</label>
+        <textarea id="message" rows="5" placeholder="Spune-ne mai multe despre evenimentul tău..." required></textarea>
+
+        <button type="submit" class="btn-primary">Trimite mesajul</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Magic Mirror Events. Toate drepturile rezervate.</p>
+  </footer>
+</body>
+</html>
