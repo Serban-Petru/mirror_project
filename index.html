@@ -1,76 +1,512 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magic Mirror Events - Închiriere pentru nunți</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Oglindă Fermecată — povești & imagini</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <meta name="description" content="Mic site demonstrativ cu efecte, responsive, blocuri imagine pentru înlocuire ulterioară." />
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7ee3c7;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --radius:12px;
+      --max-width:1100px;
+      --gap:20px;
+      --nav-height:72px;
+      --easing:cubic-bezier(.2,.9,.2,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(126,227,199,0.06), transparent 10%),
+                  linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%),
+                  var(--bg);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:60px;
+    }
+
+    /* Container */
+    .wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px;
+    }
+
+    /* NAV */
+    header{
+      position:sticky;
+      top:12px;
+      z-index:60;
+      backdrop-filter: blur(6px) saturate(120%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      margin:0;
+      padding:10px;
+      border-radius:16px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      height:var(--nav-height);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:48px;height:48px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent), #4bd0ff);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 -6px 15px rgba(255,255,255,0.06);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#042024;
+    }
+    nav .links{
+      margin-left:auto;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .links a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:10px;
+      transition: all 220ms var(--easing);
+      font-weight:600;
+      font-size:14px;
+    }
+    .links a:hover{color:white; transform:translateY(-3px); box-shadow:0 6px 18px rgba(12,18,30,0.5)}
+    .cta{
+      background:linear-gradient(90deg,var(--accent),#4bd0ff);
+      color:#042024;
+      padding:8px 14px;border-radius:10px;font-weight:700;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:var(--gap);
+      align-items:center;
+      margin-top:22px;
+    }
+    .hero-left{
+      padding:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      transform:translateY(0);
+      transition: transform 600ms var(--easing);
+      overflow:hidden;
+    }
+    .hero h1{
+      margin:0 0 12px 0;
+      font-size:clamp(26px,5vw,36px);
+      letter-spacing:-0.02em;
+    }
+    .hero p.lead{ color:var(--muted); margin:0 0 18px 0; font-size:16px; }
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .button{
+      padding:10px 14px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.06);
+      color:inherit; cursor:pointer; font-weight:700; transition:all 250ms var(--easing);
+    }
+    .button:hover{ transform:translateY(-4px); box-shadow: 0 12px 30px rgba(2,6,23,0.6) }
+
+    /* Hero right - image placeholder blocks */
+    .hero-right{
+      display:grid;
+      gap:12px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .block{
+      min-height:120px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px dashed rgba(255,255,255,0.03);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--muted);
+      font-weight:700;
+      transition: transform 400ms var(--easing), box-shadow 400ms var(--easing), opacity 400ms var(--easing);
+      will-change:transform, opacity;
+    }
+    .block.big{ grid-column: 1 / -1; min-height:220px; }
+
+    /* Sections */
+    section{
+      margin-top:22px;
+      padding:18px;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      box-shadow: 0 6px 26px rgba(2,6,23,0.45);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    .card{
+      padding:16px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      min-height:120px;
+      display:flex;flex-direction:column;gap:8px;
+      transition: transform 450ms var(--easing), box-shadow 450ms var(--easing);
+      cursor:default;
+    }
+    .card:hover{ transform:translateY(-8px); box-shadow:0 18px 40px rgba(2,6,23,0.6) }
+    .card .title{ font-weight:700; }
+    .card .muted{ color:var(--muted); font-size:13px; }
+
+    /* Footer */
+    footer{
+      margin-top:26px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      padding:12px;
+    }
+
+    /* Small screens */
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-right{ grid-template-columns: 1fr 1fr; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .nav{ gap:8px }
+      .links{ display:none } /* simplified mobile nav */
+    }
+    @media (max-width:560px){
+      .grid{ grid-template-columns: 1fr; }
+      .hero-right{ grid-template-columns: 1fr; }
+      .hero-left{ padding:18px }
+      header{ padding:8px }
+      .logo{ width:40px;height:40px }
+    }
+
+    /* scroll reveal initial state */
+    .reveal{ opacity:0; transform: translateY(14px) scale(.995); transition: all 700ms var(--easing); }
+    .reveal.visible{ opacity:1; transform:none; }
+
+    /* small flourish */
+    .sparkle{
+      position:relative;
+      display:inline-block;
+    }
+    .sparkle::after{
+      content:'';
+      position:absolute; right:-6px; top:-6px;
+      width:10px;height:10px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 6px 18px rgba(126,227,199,0.18);
+      opacity:0; transform:scale(.3);
+      transition:all 350ms var(--easing);
+    }
+    .sparkle:hover::after{ opacity:1; transform:scale(1); }
+  </style>
 </head>
 <body>
-  <!-- ===================== NAVBAR ===================== -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Magic Mirror</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Acasă</a></li>
-        <li><a href="#despre">Despre</a></li>
-        <li><a href="#galerie">Galerie</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="menu-toggle" id="menuToggle">&#9776;</div>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header aria-label="Meniu principal">
+      <div class="nav">
+        <a href="#" class="brand" aria-label="Acasă">
+          <div class="logo">OF</div>
+          <div>
+            <div style="font-weight:800;">Oglindă Fermecată</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Povești | Fotografii | Amintiri</div>
+          </div>
+        </a>
 
-  <!-- ===================== HERO SECTION ===================== -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Imortalizează magia nunții tale</h1>
-      <p>Închiriază Magic Mirror-ul foto pentru evenimentele tale speciale.</p>
-      <a href="contact.html" class="btn-primary">Rezervă acum</a>
-    </div>
-  </section>
+        <nav class="links" aria-label="Legături principale">
+          <a href="#despre">Despre</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#contact">Contact</a>
+          <a class="cta" href="#viziteaza">Vizitează</a>
+        </nav>
+      </div>
+    </header>
 
-  <!-- ===================== DESPRE ===================== -->
-  <section class="despre" id="despre">
-    <div class="container">
-      <h2>Ce este Magic Mirror?</h2>
-      <p>
-        Magic Mirror este o oglindă interactivă care face poze instant, oferind o experiență unică 
-        invitaților tăi. Perfectă pentru nunți, botezuri și petreceri corporate.
-      </p>
-      <div class="features">
-        <div class="feature-card">
-          <h3>💍 Ideal pentru nunți</h3>
-          <p>Adaugă o notă elegantă și distractivă evenimentului tău special.</p>
+    <!-- HERO -->
+    <main class="hero" role="main" aria-labelledby="hero-title">
+      <div class="hero-left reveal" id="hero-left">
+        <h1 id="hero-title">Oglinda care păstrează momente</h1>
+        <p class="lead">Oglinda Magică capturează cele mai frumoase amintiri și le printează pe loc pentru fiecare invitat. Folosim hârtie și printere profesionale, astfel că pozele nu se vor decolora in timp. Oferim doar pachete complete ce includ poze nelimitate, carte de amintiri, operator, decoruri și accesorii. </p>
+
+        <div class="hero-actions">
+          <button class="button" id="scroll-gal">Vezi galeria</button>
+          <button class="button" id="play-demo">Micuță animație</button>
         </div>
-        <div class="feature-card">
-          <h3>📸 Poze instant</h3>
-          <p>Printează sau trimite digital fotografiile pe loc.</p>
+
+        <div style="height:14px"></div>
+        <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div style="width:44px;height:44px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700">
+            <svg fill="#1877F2" viewBox="-5.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>facebook</title> <path d="M1.188 5.594h18.438c0.625 0 1.188 0.563 1.188 1.188v18.438c0 0.625-0.563 1.188-1.188 1.188h-18.438c-0.625 0-1.188-0.563-1.188-1.188v-18.438c0-0.625 0.563-1.188 1.188-1.188zM14.781 17.281h2.875l0.125-2.75h-3v-2.031c0-0.781 0.156-1.219 1.156-1.219h1.75l0.063-2.563s-0.781-0.125-1.906-0.125c-2.75 0-3.969 1.719-3.969 3.563v2.375h-2.031v2.75h2.031v7.625h2.906v-7.625z"></path> </g></svg>
+          </div>
+          <div style="font-size:13px;color:var(--muted)">Hai sa vezi ce evenimente am desfasurat!</div>
         </div>
-        <div class="feature-card">
-          <h3>✨ Personalizare totală</h3>
-          <p>Design-ul layoutului, mesajele și animațiile pot fi adaptate pentru fiecare eveniment.</p>
+        </a>
+      </div>
+
+      <div class="hero-right" aria-hidden="false">
+
+        <div class="block reveal" data-reveal-delay="80">
+          <img src="poze/p_o_1.png" loading="lazy" alt="descriere" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
+        </div>
+
+        <div class="block reveal" data-reveal-delay="120">
+            <img src="poze/p_o_2.jpg" loading="lazy" alt="descriere" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
+        </div>
+
+        <div class="block big reveal" data-reveal-delay="200">Bloc larg — folosește o imagine importantă aici</div>
+        <div class="block reveal" data-reveal-delay="60">Bloc 4</div>
+      </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="despre" class="reveal">
+      <h2>De ce să alegi Magic Mirror?</h2>
+      <p class="muted" style="margin-top:6px">Alegerea Magic Mirror la evenimentul tău va crea distracție și amuzament pentru toți invitații, amintiri unice sub formă de fotografii tipărite pe loc, care pot servi și drept mărturii, precum și interacțiune socială între invitați. De asemenea, oferă un flux suplimentar de fotografii (diferite de cele ale fotografului) și permite partajarea rapidă a fotografiilor pe rețelele sociale.  </p>
+
+      <div style="height:12px"></div>
+
+      <div class="grid">
+        <article class="card reveal">
+          <div class="title">Povești scurte</div>
+          <div class="muted">Povestiri scurte asociate fiecărei fotografii — text editabil.</div>
+        </article>
+        <article class="card reveal">
+          <div class="title">Moment magic</div>
+          <div class="muted">Secțiune dedicată momentele care merită păstrate și împărtășite.</div>
+        </article>
+        <article class="card reveal">
+          <div class="title">Ușor de actualizat</div>
+          <div class="muted">Înlocuiește blocurile cu imagini, ajustează textul, publikă.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="galerie" class="reveal" style="margin-top:18px">
+      <h2>Galerie (blocuri pentru imagini)</h2>
+      <p class="muted">Am plasat blocuri care marchează locurile pentru imagini — le poți schimba cu imagini reale. Layout responsive, cu efecte la hover.</p>
+
+      <div style="height:12px"></div>
+
+      <div class="grid" id="gallery-grid" aria-live="polite">
+        <!-- multiple placeholder cards -->
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu imagine</div>
+          <div class="muted">Scurtă descriere a imaginii.</div>
+        </div>
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu imagine</div>
+          <div class="muted">Scurtă descriere a imaginii.</div>
+        </div>
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu imagine</div>
+          <div class="muted">Descriere.</div>
+        </div>
+
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu</div>
+          <div class="muted">Descriere scurtă.</div>
+        </div>
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu</div>
+          <div class="muted">Descriere scurtă.</div>
+        </div>
+        <div class="card reveal">
+          <div style="flex:1; display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);min-height:120px">IMAGINE</div>
+          <div class="title">Titlu</div>
+          <div class="muted">Descriere scurtă.</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== GALERIE ===================== -->
-  <section class="galerie" id="galerie">
-    <h2>Galerie</h2>
-    <div class="gallery-grid">
-      <!-- pozele pot fi înlocuite cu ale tale -->
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Nuntă 1">
-      <img src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f" alt="Nuntă 2">
-      <img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d0" alt="Oaspeți fericiți">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Magic Mirror Booth">
-    </div>
-  </section>
+  <!-- adaugat acum tarife -->
+    <section id="tarife" class="reveal" style="margin-top:40px">
+  <h2 style="text-align:center;">Oferta Noastră</h2>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer>
-    <p>&copy; 2025 Magic Mirror Events. Toate drepturile rezervate.</p>
-  </footer>
+  <div class="pricing-container">
+    <div class="pricing-card">
+      <div class="pricing-header">FIVE</div>
+      <ul class="pricing-list">
+        <li>POZE PREMIUM NELIMITATE</li>
+        <li>GUESTBOOK (CAIET DE AMINTIRI)</li>
+        <li>RECUZITĂ HAIOASĂ</li>
+        <li>ASISTENT CABINĂ</li>
+        <li>FUNDAL LA ALEGERE</li>
+        <li>BENZI MAGNETICE NELIMITATE</li>
+        <li>FORMAT FOTO 10x15 SAU 5x15 CM</li>
+        <li>LINK GALERIE FOTO ONLINE</li>
+        <li>PLICURI PENTRU FOTOGRAFII</li>
+        <li>MASĂ ȘI HUSĂ PENTRU RECUZITĂ</li>
+        <li>GRAFICĂ PERSONALIZATĂ</li>
+      </ul>
+      <div class="pricing-footer">5 ore</div>
+    </div>
+
+    <div class="pricing-card popular">
+      <div class="ribbon">Most Popular</div>
+      <div class="pricing-header">BEST ONE</div>
+      <ul class="pricing-list">
+        <li>POZE PREMIUM NELIMITATE</li>
+        <li>GUESTBOOK (CAIET DE AMINTIRI)</li>
+        <li>RECUZITĂ HAIOASĂ</li>
+        <li>ASISTENT CABINĂ</li>
+        <li>FUNDAL LA ALEGERE</li>
+        <li>BENZI MAGNETICE NELIMITATE</li>
+        <li>FORMAT FOTO 10x15 SAU 5x15 CM</li>
+        <li>LINK GALERIE FOTO ONLINE</li>
+        <li>PLICURI PENTRU FOTOGRAFII</li>
+        <li>MASĂ ȘI HUSĂ PENTRU RECUZITĂ</li>
+        <li>GRAFICĂ PERSONALIZATĂ</li>
+      </ul>
+      <div class="pricing-footer">6 ore</div>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-header">SEVEN</div>
+      <ul class="pricing-list">
+        <li>POZE PREMIUM NELIMITATE</li>
+        <li>GUESTBOOK (CAIET DE AMINTIRI)</li>
+        <li>RECUZITĂ HAIOASĂ</li>
+        <li>ASISTENT CABINĂ</li>
+        <li>FUNDAL LA ALEGERE</li>
+        <li>BENZI MAGNETICE NELIMITATE</li>
+        <li>FORMAT FOTO 10x15 SAU 5x15 CM</li>
+        <li>LINK GALERIE FOTO ONLINE</li>
+        <li>PLICURI PENTRU FOTOGRAFII</li>
+        <li>MASĂ ȘI HUSĂ PENTRU RECUZITĂ</li>
+        <li>GRAFICĂ PERSONALIZATĂ</li>
+      </ul>
+      <div class="pricing-footer">7 ore</div>
+    </div>
+  </div>
+</section>
+  <!-- adaugat acum tarife -->
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal" style="margin-top:18px">
+      <h2>Contact</h2>
+      <p class="muted">Lasă-ne un mesaj sau cere ajutor pentru a-ți pune imaginile în pagină.</p>
+
+      <form id="contact-form" style="display:grid;gap:8px;margin-top:12px">
+        <input aria-label="Nume" required placeholder="Nume" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+        <input aria-label="Email" type="email" required placeholder="Email" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+        <textarea aria-label="Mesaj" placeholder="Mesaj" rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+        <div style="display:flex;gap:10px">
+          <button type="submit" class="button">Trimite</button>
+          <button type="button" id="clear" class="button">Golește</button>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Oglindă Fermecată — design demo. Înlocuiește textul cu al tău dacă ai drepturi.
+    </footer>
+  </div>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for "Vezi galeria"
+    document.getElementById('scroll-gal').addEventListener('click', function(){
+      document.querySelector('#galerie').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Simple reveal on scroll with staggered delays
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const delay = el.getAttribute('data-reveal-delay') || 0;
+          setTimeout(()=> el.classList.add('visible'), delay);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold: 0.12});
+
+    reveals.forEach(el=>{
+      io.observe(el);
+    });
+
+    // Small demo animation for hero blocks when clicking "Micuță animație"
+    document.getElementById('play-demo').addEventListener('click', function(){
+      const blocks = document.querySelectorAll('.hero-right .block');
+      blocks.forEach((b,i)=>{
+        b.animate([
+          { transform: 'translateY(0) scale(1)', opacity:1 },
+          { transform: 'translateY(-18px) scale(1.03)', opacity:0.95 },
+          { transform: 'translateY(0) scale(1)', opacity:1 }
+        ],{
+          duration: 900 + i*120,
+          easing: 'cubic-bezier(.2,.9,.2,1)'
+        });
+      });
+    });
+
+    // Hover tilt effect for blocks (subtle) - pointermove-based for desktop
+    const supportsPointer = window.matchMedia('(hover:hover)').matches;
+    if(supportsPointer){
+      document.querySelectorAll('.block, .card').forEach(el=>{
+        el.addEventListener('pointermove', (ev)=>{
+          const rect = el.getBoundingClientRect();
+          const cx = rect.left + rect.width/2;
+          const cy = rect.top + rect.height/2;
+          const dx = (ev.clientX - cx) / rect.width;
+          const dy = (ev.clientY - cy) / rect.height;
+          el.style.transform = `perspective(600px) rotateX(${(-dy*6).toFixed(2)}deg) rotateY(${(dx*8).toFixed(2)}deg) translateZ(0)`;
+          el.style.boxShadow = `${-dx*18}px ${Math.abs(dy)*18}px 40px rgba(2,6,23,0.5)`;
+        });
+        el.addEventListener('pointerleave', ()=> {
+          el.style.transform = '';
+          el.style.boxShadow = '';
+        });
+      });
+    }
+
+    // Contact form demo handler (no server) — just prevents submit and shows a small animation -> you can connect to backend later
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Se trimite...';
+      setTimeout(()=>{
+        btn.textContent = 'Trimis ✓';
+        btn.disabled = false;
+        form.reset();
+        btn.animate([{transform:'scale(1)'},{transform:'scale(1.04)'},{transform:'scale(1)'}],{duration:500, easing:'ease-out'});
+      }, 900);
+    });
+    document.getElementById('clear').addEventListener('click', ()=> form.reset());
+
+    // Accessibility: keyboard focus outline
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    });
+  </script>
 </body>
 </html>
