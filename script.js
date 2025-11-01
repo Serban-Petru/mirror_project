@@ -154,3 +154,35 @@ if (track && items.length) {
 
 
 //mobil carusel galerie logica
+
+// chestie de animatie
+
+
+function revealOnScroll() {
+  const trigger = window.innerHeight * 0.85;
+
+  // grupăm după secțiune părinte (ex: ABOUT, TARIFE etc.)
+  const sections = {};
+
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const section = el.closest('section')?.id || 'default';
+    if (!sections[section]) sections[section] = [];
+    if (rect.top < trigger && !el.classList.contains('active')) {
+      sections[section].push(el);
+    }
+  });
+
+  // aplicăm stagger separat pentru fiecare grup vizibil
+  Object.values(sections).forEach(group => {
+    group.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.15}s`;
+      el.classList.add('active');
+    });
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// chestie de animatie
