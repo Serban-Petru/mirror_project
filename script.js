@@ -91,7 +91,7 @@ const prevBtn = document.querySelector('.prev');
 if (track && items.length) {
   let index = 0;
   let autoSlide;
-  const interval = 4000; // 4 secunde între slide-uri
+  const interval = 2000; // 4 secunde între slide-uri
 
   const updateCarousel = () => {
     track.style.transform = `translateX(-${index * 100}%)`;
