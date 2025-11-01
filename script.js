@@ -78,3 +78,79 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
     });
+
+
+//mobil carusel galerie logica
+
+// Carusel simplu cu auto-slide pentru mobil
+const track = document.querySelector('.carousel-track');
+const items = document.querySelectorAll('.carousel-item');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+if (track && items.length) {
+  let index = 0;
+  let autoSlide;
+  const interval = 4000; // 4 secunde între slide-uri
+
+  const updateCarousel = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  const nextSlide = () => {
+    index = (index + 1) % items.length;
+    updateCarousel();
+  };
+
+  const prevSlide = () => {
+    index = (index - 1 + items.length) % items.length;
+    updateCarousel();
+  };
+
+  // Auto slide logic
+  const startAuto = () => {
+    stopAuto(); // evităm dublarea
+    autoSlide = setInterval(nextSlide, interval);
+  };
+
+  const stopAuto = () => {
+    if (autoSlide) clearInterval(autoSlide);
+  };
+
+  // Butoane
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    startAuto(); // repornim cronometru
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    startAuto();
+  });
+
+  // Swipe pe mobil
+  let startX = 0;
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    stopAuto(); // oprește temporar auto slide la atingere
+  });
+
+  track.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) nextSlide();
+      else prevSlide();
+    }
+    startAuto(); // reia auto slide după swipe
+  });
+
+  // Pornim auto slide doar pe ecrane mici
+  if (window.innerWidth <= 768) startAuto();
+
+  // Oprim când utilizatorul părăsește pagina
+  window.addEventListener('blur', stopAuto);
+  window.addEventListener('focus', startAuto);
+}
+
+
+//mobil carusel galerie logica
