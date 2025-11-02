@@ -1,7 +1,6 @@
-   :root{
+   /* :root{
       --bg:#0f1724;
       --card:#0b1220;
-      /* --accent:#7ee3c7;  old color*/
       --accent:#ffb6c1;
       --muted:#9aa4b2;
       --glass: rgba(255,255,255,0.04);
@@ -10,17 +9,35 @@
       --gap:20px;
       --nav-height:72px;
       --easing:cubic-bezier(.2,.9,.2,1);
-    }
+    } */
+
+:root {
+  --bg: #f5f5f7;        /* alb-perlat, ușor gri */
+  --card: #ffffff;      /* alb pur pentru carduri */
+  --accent: #ffb6c1;    /* roz pal – poți schimba cu #f5c542 pentru auriu */
+  --muted: #555b63;     /* gri elegant pentru text secundar */
+  --glass: rgba(0, 0, 0, 0.05); /* efect subtil de transparență */
+  --radius: 14px;
+  --max-width: 1100px;
+  --gap: 20px;
+  --nav-height: 72px;
+  --easing: cubic-bezier(.2,.9,.2,1);
+}
+
+
+    
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       
       margin:0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(126,227,199,0.06), transparent 10%),
-                  linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%),
-                  var(--bg);
-      color:#e6eef6;
+background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), transparent 20%),
+            linear-gradient(180deg, rgba(255,255,255,0.6), transparent 60%),
+            var(--bg);
+
+      /* color:#e6eef6; */
+      color: #2a2a2a;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
@@ -117,10 +134,16 @@
     }
     .hero p.lead{ color:var(--muted); margin:0 0 18px 0; font-size:16px; }
     .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
-    .button{
-      padding:10px 14px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.06);
-      color:inherit; cursor:pointer; font-weight:700; transition:all 250ms var(--easing);
-    }
+.button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.1); /* linie subtilă pe alb */
+  color: #2a2a2a; /* text închis */
+  font-weight: 600;
+  transition: all 0.3s var(--easing);
+  cursor: pointer;
+}
     .button:hover{ transform:translateY(-4px); box-shadow: 0 12px 30px rgba(2,6,23,0.6) }
 
     /* Hero right - image placeholder blocks */
@@ -426,14 +449,14 @@
 }
 
 .about-content h3{
-  color:#fff;
+  color:#2a2a2a;
   font-size:1.4rem;
   margin-bottom:10px;
   letter-spacing:1px;
 }
 
 .about-content p{
-  color:#c7cbd2;
+  color:#2a2a2a;
   font-size:0.95rem;
   line-height:1.6;
 }
@@ -463,3 +486,59 @@
 
 
 /* poze colaj fundal */
+
+.card, .block {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+
+/* butone contact */
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.contact-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 20px;
+  transition: all 0.35s var(--easing);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+
+.contact-btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .contact-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
+
+/* butone contatct */
