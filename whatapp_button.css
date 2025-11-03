@@ -1,0 +1,29 @@
+.whatsapp-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366; /* culoarea oficială WhatsApp */
+  color: white;
+  font-size: 28px;
+  text-align: center;
+  line-height: 56px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: all 0.3s var(--easing);
+}
+
+.whatsapp-button:hover {
+  background: #20ba5a;
+  transform: scale(1.05);
+}
+
+/* Doar pe ecrane mici (telefon/tabletă) */
+@media (max-width: 768px) {
+  .whatsapp-button {
+    display: block;
+  }
+}
