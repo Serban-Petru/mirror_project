@@ -186,3 +186,34 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
 // chestie de animatie
+
+
+//flip header text
+
+
+
+const words = ["magice✨", "memorabile💍", "unice🥰", "inedite🥳"];
+let index = 0;
+const fadeWord = document.querySelector(".fade-word");
+
+function changeWord() {
+  fadeWord.classList.remove("fade-in");
+  fadeWord.classList.add("fade-out");
+
+  // schimbă textul mai rapid
+  setTimeout(() => {
+    index = (index + 1) % words.length;
+    fadeWord.textContent = words[index];
+    fadeWord.classList.remove("fade-out");
+    fadeWord.classList.add("fade-in");
+  }, 600); // durata fade-out
+}
+
+// mai scurt între tranziții
+setInterval(changeWord, 2500);
+
+
+
+
+
+//flip header text
