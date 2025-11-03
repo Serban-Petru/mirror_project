@@ -1,0 +1,125 @@
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/* Card general */
+.event-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.05);
+  transition: transform .4s var(--easing), box-shadow .4s var(--easing);
+  position: relative;
+  width: 90%;
+  max-width: 300px; /* 🔹 mai mic și echilibrat vizual */
+}
+
+.event-card img {
+  width: 100%;
+  height: 300px; /* 🔹 mai puțin înalt, dar cu rezoluție mare */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  image-rendering: high-quality; /* 🔹 claritate maximă */
+}
+
+.event-content {
+  padding: 14px;
+}
+
+.event-content h3 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.event-content p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.event-card.featured {
+  position: relative;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 12px rgba(255, 182, 193, 0.35);
+  z-index: 3;
+  transition: all 0.4s var(--easing);
+}
+.event-card.featured::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 182, 193, 0.6),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 182, 193, 0.6)
+  );
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0.8;
+  animation: borderGlow 3s ease-in-out infinite;
+}
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(9px);
+  }
+}
+
+
+/* Hover elegant */
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* --- Responsive --- */
+
+/* Tablete */
+@media (max-width: 900px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .event-card {
+    max-width: 260px;
+  }
+  .event-card.featured {
+    order: -1;
+  }
+}
+
+/* Telefoane */
+@media (max-width: 600px) {
+  .events-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0 14px;
+  }
+
+  .event-card {
+    flex: 0 0 78%;
+    min-width: 220px;
+    scroll-snap-align: center;
+    max-width: none;
+  }
+
+  .event-card img {
+    height: 230px;
+  }
+}
