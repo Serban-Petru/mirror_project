@@ -300,10 +300,11 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
 .pricing-list li{margin:4px 0;}
 .pricing-footer{
   margin-top:18px;
-  background:rgba(126,227,199,0.1);
+  /* background:rgba(126,227,199,0.1); */
+  background: #ffcf40;
   color:var(--accent);
   padding:12px;
-  border-radius:0 0 16px 16px;
+  border-radius: 16px 16px 0 0;
   font-weight:700;
   font-size:1.1rem;
   letter-spacing:.05em;
@@ -333,6 +334,7 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
 @media(max-width:640px){
   .pricing-card{max-width:100%;}
   .ribbon{top:-12px;font-size:.75rem;}
+  .pricing-card.popular{margin-top: 25px;}
 }
 
 

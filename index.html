@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="evenimente.css">
   <link rel="stylesheet" href="whatapp_button.css">
   <link rel="stylesheet" href="flip_header.css">
+  <link rel="stylesheet" href="contact_section.css">
   <script src="script.js" defer></script>
   <meta name="description" content="Mic site demonstrativ cu efecte, responsive, blocuri imagine pentru înlocuire ulterioară." />
 
@@ -275,44 +276,63 @@
  <!-- sectiune botezuri etc -->
 
     <!-- CONTACT -->
-    <section id="contact" class="reveal" style="margin-top:18px">
-      <h2>Contact</h2>
-      <p class="muted">Lasă-ne un mesaj sau cere ajutor pentru a-ți pune imaginile în pagină.</p>
+<section id="contact" class="reveal" style="margin-top:32px">
+  <h2>Contact</h2>
+  <p class="muted">Alege modalitatea preferată de a lua legătura cu noi.</p>
 
-      <form id="contact-form" style="display:grid;gap:8px;margin-top:12px">
-        <input aria-label="Nume" required placeholder="Nume" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-        <input aria-label="Email" type="email" required placeholder="Email" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
-        <textarea aria-label="Mesaj" placeholder="Mesaj" rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
-        <div style="display:flex;gap:10px">
-          <button type="submit" class="button">Trimite</button>
-          <button type="button" id="clear" class="button">Golește</button>
-        </div>
-      </form>
-
-      <div class="contact-buttons">
-  <!-- Telefon -->
-  <a href="tel:+40740513413" class="contact-btn" aria-label="Sună-ne">
-    <i class="fa-solid fa-phone"></i>
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO" target="_blank" class="contact-btn" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-  </a>
+  <!-- Butoane rapide: social & telefon -->
+  <div class="contact-social">
+    <a href="tel:+40740513413" class="contact-btn" aria-label="Telefon">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+    <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO"
+       target="_blank" class="contact-btn" aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    <!-- <a href="https://instagram.com/" target="_blank" class="contact-btn" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a> -->
+    <a href="https://wa.me/+40740513413" target="_blank" class="contact-btn" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 
   <!-- Google Forms -->
-  <a href="https://forms.gle/EXEMPLUFORM" target="_blank" class="contact-btn" aria-label="Formular Google">
-    <i class="fa-solid fa-file-lines"></i>
-  </a>
+  <div class="contact-form-info">
+    <p class="muted">Poți completa formularul și te vom contacta în cel mai scurt timp.</p>
+    <a href="https://forms.gle/EXEMPLUFORM" target="_blank" class="form-btn">
+      Formular de rezervare
+    </a>
+  </div>
 
-  <!-- Instagram -->
-  <a href="https://instagram.com/" target="_blank" class="contact-btn" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-</div>
+  <!-- Carte de vizită -->
+  <div class="contact-card">
+    <h3>Carte de vizită</h3>
+    <div class="contact-info">
+      <p><strong>Nume:</strong> Cezar</p>
+      <p><strong>Email:</strong> cezar_xp13@yahoo.com</p>
+      <p><strong>Telefon:</strong> +40 740 513 413</p>
+    </div>
+  </div>
+
+  <!-- Formular principal -->
+  <div class="contact-form">
+    <h3>Trimite un mesaj direct</h3>
+    <form id="contact-form">
+      <input aria-label="Nume" required placeholder="Nume" />
+      <input aria-label="Email" type="email" required placeholder="Email" />
+      <textarea aria-label="Mesaj" placeholder="Mesaj" rows="4"></textarea>
+      <div class="form-actions">
+        <button type="submit" class="button">Trimite</button>
+        <button type="button" id="clear" class="button">Golește</button>
+      </div>
+    </form>
+  </div>
+</section>
 
 
-    </section>
+
+</section>
 
   
   
@@ -323,7 +343,7 @@
 
 
     <footer>
-      © <span id="year"></span> Oglindă Fermecată — design demo. Înlocuiește textul cu al tău dacă ai drepturi.
+      © <span id="year"></span> Oglindă Fermecată — Copyright All Rights Reserved
     </footer>
   </div>
 
