@@ -5,6 +5,10 @@
     document.getElementById('scroll-gal').addEventListener('click', function(){
       document.querySelector('#galerie').scrollIntoView({behavior:'smooth', block:'start'});
     });
+    
+    document.getElementById('scroll-fundal').addEventListener('click', function(){
+      document.querySelector('#despre').scrollIntoView({behavior:'smooth', block:'start'});
+    });
 
     // Simple reveal on scroll with staggered delays
     const reveals = document.querySelectorAll('.reveal');
@@ -23,20 +27,20 @@
       io.observe(el);
     });
 
-    // Small demo animation for hero blocks when clicking "Micuță animație"
-    document.getElementById('play-demo').addEventListener('click', function(){
-      const blocks = document.querySelectorAll('.hero-right .block');
-      blocks.forEach((b,i)=>{
-        b.animate([
-          { transform: 'translateY(0) scale(1)', opacity:1 },
-          { transform: 'translateY(-18px) scale(1.03)', opacity:0.95 },
-          { transform: 'translateY(0) scale(1)', opacity:1 }
-        ],{
-          duration: 900 + i*120,
-          easing: 'cubic-bezier(.2,.9,.2,1)'
-        });
-      });
-    });
+    // // Small demo animation for hero blocks when clicking "Micuță animație"
+    // document.getElementById('play-demo').addEventListener('click', function(){
+    //   const blocks = document.querySelectorAll('.hero-right .block');
+    //   blocks.forEach((b,i)=>{
+    //     b.animate([
+    //       { transform: 'translateY(0) scale(1)', opacity:1 },
+    //       { transform: 'translateY(-18px) scale(1.03)', opacity:0.95 },
+    //       { transform: 'translateY(0) scale(1)', opacity:1 }
+    //     ],{
+    //       duration: 900 + i*120,
+    //       easing: 'cubic-bezier(.2,.9,.2,1)'
+    //     });
+    //   });
+    // });
 
     // Hover tilt effect for blocks (subtle) - pointermove-based for desktop
     const supportsPointer = window.matchMedia('(hover:hover)').matches;
