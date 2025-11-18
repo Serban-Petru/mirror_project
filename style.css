@@ -625,3 +625,7 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
 .plus_border{
   border-left: solid 10px #E2A16F;
 }
+
+#contact .muted{
+  font-size: 20px;
+}
