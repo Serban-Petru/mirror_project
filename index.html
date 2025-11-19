@@ -13,7 +13,12 @@
   <link rel="stylesheet" href="contact_section.css">
 
   <script src="script.js" defer></script>
+  <script src="emailJS.js" defer></script>
   <meta name="description" content="Mic site demonstrativ cu efecte, responsive, blocuri imagine pentru înlocuire ulterioară." />
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>  emailjs.init("SSOutBwSrcU5H-Je3"); </script>
+
 
 </head>
 <body>
@@ -319,19 +324,42 @@
     </div>
   </div>
 
-  <!-- Formular principal -->
-  <div class="contact-form">
-    <h3>Trimite un mesaj direct</h3>
-    <form id="contact-form">
-      <input aria-label="Nume" required placeholder="Nume" />
-      <input aria-label="Email" type="email" required placeholder="Email" />
-      <textarea aria-label="Mesaj" placeholder="Mesaj" rows="4"></textarea>
+<!-- Formular principal -->
+<div class="contact-form">
+  <h3>Trimite un mesaj direct</h3>
+  <form id="contact-form">
+      
+      <input 
+        aria-label="Nume" 
+        required 
+        placeholder="Nume" 
+        name="nume"
+      />
+
+      <input 
+        aria-label="Email" 
+        type="email" 
+        required 
+        placeholder="Email" 
+        name="email"
+      />
+
+      <textarea 
+        aria-label="Mesaj" 
+        placeholder="Mesaj" 
+        rows="4"
+        name="mesaj"
+      ></textarea>
+
       <div class="form-actions">
         <button type="submit" class="button">Trimite</button>
         <button type="button" id="clear" class="button">Golește</button>
       </div>
-    </form>
-  </div>
+
+  </form>
+
+  <p id="status-message" style="margin-top:10px;"></p>
+</div>
 </section>
 
 

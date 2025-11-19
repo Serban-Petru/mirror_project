@@ -138,3 +138,127 @@
     text-align: center;
   }
 }
+
+/* carte de visita */
+/* Font loud & modern */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap');
+
+.contact-card {
+  position: relative;
+  background: var(--card);
+  border-radius: 22px;
+  padding: 36px 32px;
+  margin-top: 26px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 182, 193, 0.45);
+  box-shadow: 0 12px 36px rgba(255, 182, 193, 0.28);
+
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+
+  backdrop-filter: blur(3px);
+}
+
+/* Elemente decorative artistice */
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255,182,193,0.55),
+    transparent 70%
+  );
+  filter: blur(25px);
+}
+
+.contact-card::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle at bottom right,
+    rgba(108,99,255,0.5),
+    transparent 70%
+  );
+  filter: blur(25px);
+}
+
+/* TITLU artistic — rămâne delicat */
+.contact-card h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-style: italic;
+
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 0 0 18px 0;
+  position: relative;
+}
+
+/* Linie ornamentală */
+.contact-card h3::after {
+  content: "";
+  width: 160px;
+  height: 2px;
+  display: block;
+  margin: 14px auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    var(--accent-secondary),
+    transparent
+  );
+  border-radius: 50px;
+  opacity: 0.9;
+}
+
+/* TEXT principal — loud, puternic, mai mare */
+.contact-info p {
+  font-size: 1.3rem;       /* mai mare */
+  font-weight: 600;        /* loud */
+  margin: 12px 0;
+  padding: 8px 0;
+  color: #333;
+
+  border-bottom: 1px dotted rgba(0,0,0,0.15);
+}
+
+/* Etichete — la fel loud, colorate */
+.contact-info strong {
+  font-size: 1.3rem;
+  font-weight: 800; 
+  color: var(--accent);
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 26px;
+  }
+
+  .contact-card h3 {
+    font-size: 1.65rem;
+  }
+
+  .contact-info p,
+  .contact-info strong {
+    font-size: 1.15rem;
+  }
+}
+
+
+
+
+/* carte de visita */
