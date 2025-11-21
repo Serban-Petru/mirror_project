@@ -2,8 +2,8 @@
 #contact {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  max-width: 800px;
+  gap: 10px;
+  max-width: auto;
   margin: 0 auto;
   text-align: center;
 }
@@ -14,6 +14,7 @@
   justify-content: center;
   gap: 20px;
   margin-top: 10px;
+  border: 2px solid white;
 }
 
 .contact-btn {
@@ -117,6 +118,7 @@
 @media (max-width: 768px) {
   #contact {
     padding: 0 14px;
+    padding-bottom: 20px;
   }
 
   .contact-social {
@@ -262,3 +264,72 @@
 
 
 /* carte de visita */
+
+/* --- CONTACT GRID --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+/* Left column spacing */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Right column spacing */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: left;
+}
+
+/* Ensure social icons align left on desktop */
+.contact-social {
+  justify-content: center;
+
+}
+
+/* Google form alignment */
+.contact-form-info {
+  text-align: center;
+  
+  
+}
+
+/* Business card alignment */
+.contact-card {
+  margin-top: 0 !important;
+
+}
+
+/* --- MOBILE: KEEP EXACT SAME STYLE AS BEFORE --- */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact-left,
+  .contact-right {
+    gap: 22px;
+
+  }
+
+  .contact-social {
+    justify-content: center;
+  }
+
+  .contact-form-info {
+    text-align: center;
+  }
+}
+
+/* new stuff */
+

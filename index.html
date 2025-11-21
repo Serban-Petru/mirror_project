@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="whatapp_button.css">
   <link rel="stylesheet" href="flip_header.css">
   <link rel="stylesheet" href="contact_section.css">
+  <link rel="stylesheet" href="card_vizita.css">
 
   <script src="script.js" defer></script>
   <script src="emailJS.js" defer></script>
@@ -284,83 +285,85 @@
 
  <!-- sectiune botezuri etc -->
 
-    <!-- CONTACT -->
 <section id="contact" class="reveal" style="margin-top:32px">
   <h2>Contact</h2>
   <p class="muted">Alege modalitatea preferată de a lua legătura cu noi.</p>
 
-  <!-- Butoane rapide: social & telefon -->
-  <div class="contact-social">
-    <a href="tel:+40740513413" class="contact-btn" aria-label="Telefon">
-      <i class="fa-solid fa-phone"></i>
-    </a>
-    <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO"
-       target="_blank" class="contact-btn" aria-label="Facebook">
-      <i class="fa-brands fa-facebook-f"></i>
-    </a>
-    <!-- <a href="https://instagram.com/" target="_blank" class="contact-btn" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a> -->
-    <a href="https://wa.me/+40740513413" target="_blank" class="contact-btn" aria-label="WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
+  <div class="contact-grid">
 
-  <!-- Google Forms -->
-  <div class="contact-form-info">
-    <p class="muted">Sau poți completa formularul și te vom contacta în cel mai scurt timp.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7_Ux7D3MZu5BHA_WOJANUuL3V7fBJZ7D1mI72R94P-ktNBw/viewform" target="_blank" class="form-btn">
-      Formular de rezervare
-    </a>
-  </div>
+    <!-- LEFT SIDE — FORM -->
+    <div class="contact-left">
+      <div class="contact-form">
+        <h3>Trimite un mesaj direct</h3>
+        <form id="contact-form">
 
-  <!-- Carte de vizită -->
-  <div class="contact-card">
-    <h3>Carte de vizită</h3>
-    <div class="contact-info">
-      <p><strong>Nume:</strong> Cezar</p>
-      <p><strong>Email:</strong> cezar_xp13@yahoo.com</p>
-      <p><strong>Telefon:</strong> +40 740 513 413</p>
+          <input aria-label="Nume" required placeholder="Nume" name="nume" />
+          <input aria-label="Email" type="email" required placeholder="Email" name="email" />
+          <textarea aria-label="Mesaj" placeholder="Mesaj" rows="4" name="mesaj"></textarea>
+
+          <div class="form-actions">
+            <button type="submit" class="button">Trimite</button>
+            <button type="button" id="clear" class="button">Golește</button>
+          </div>
+
+        </form>
+        <p id="status-message" style="margin-top:10px;"></p>
+      </div>
     </div>
-  </div>
 
-<!-- Formular principal -->
-<div class="contact-form">
-  <h3>Trimite un mesaj direct</h3>
-  <form id="contact-form">
-      
-      <input 
-        aria-label="Nume" 
-        required 
-        placeholder="Nume" 
-        name="nume"
-      />
+    <!-- RIGHT SIDE — SOCIAL + FORMULAR + BUSINESS CARD -->
+    <div class="contact-right">
 
-      <input 
-        aria-label="Email" 
-        type="email" 
-        required 
-        placeholder="Email" 
-        name="email"
-      />
+      <!-- Social icons -->
+      <div class="card-vizita card_v">
+        <div class="contact-social-card card-content">
+          <div class="left-card-info">
 
-      <textarea 
-        aria-label="Mesaj" 
-        placeholder="Mesaj" 
-        rows="4"
-        name="mesaj"
-      ></textarea>
+            <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO" target="_blank" class="contact-btn" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/+40740513413" target="_blank" class="contact-btn" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="tel:+40740513413" class="contact-btn" aria-label="Telefon">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+          <div class="right-card-info">
+            <p class="card-title">Cezar</p>
+            <p class="card-para">Email: <a href="mailto:cezar_xp13@yahoo.com" style="text-decoration: none;">cezar_xp13@yahoo.com <br><br> Telefon: <a href="tel:+40740513413" style="text-decoration: none;">+40 740 513 413</a></a></p>
+            
 
-      <div class="form-actions">
-        <button type="submit" class="button">Trimite</button>
-        <button type="button" id="clear" class="button">Golește</button>
+          </div>
+
+        </div>
       </div>
 
-  </form>
+      <!-- Google form -->
+      <div class="contact-form-info">
+        <p class="muted">Sau poți completa formularul și te vom contacta rapid.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7_Ux7D3MZu5BHA_WOJANUuL3V7fBJZ7D1mI72R94P-ktNBw/viewform" target="_blank" class="form-btn"> Formular de rezervare </a>
+      </div>
 
-  <p id="status-message" style="margin-top:10px;"></p>
+      <!-- Business card -->
+
+
+    </div>
+
+  </div>
+        <!-- <div class="contact-card">
+        <h3>Carte de vizită</h3>
+        <div class="contact-info">
+          <p><strong>Nume:</strong> Cezar</p>
+          <p><strong>Email:</strong> cezar_xp13@yahoo.com</p>
+          <p><strong>Telefon:</strong> +40 740 513 413</p>
+        </div>
+      </div> -->
 </div>
+
+
 </section>
+
 
 
 

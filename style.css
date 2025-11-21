@@ -552,6 +552,7 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 24px;
+
 }
 
 .contact-btn {
@@ -559,7 +560,8 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
   height: 48px;
   border-radius: 50%;
   background: var(--card);
-  border: 1px solid rgba(0,0,0,0.08);
+  /* border: 1px solid rgba(0,0,0,0.08); */
+  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;

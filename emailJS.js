@@ -6,7 +6,7 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
   emailjs.sendForm("service_p1zpxqu", "template_rimljoe", this)
   .then(() => {
       document.getElementById("status-message").innerText = "Mesaj trimis cu succes!";
-      document.getElementById("status-message").style.color = "var(--accent)";
+      document.getElementById("status-message").style.color = "#20fe3a";
       this.reset();
   }, (err) => {
       document.getElementById("status-message").innerText = "Eroare la trimitere.";
