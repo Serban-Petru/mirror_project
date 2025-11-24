@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="flip_header.css">
     <link rel="stylesheet" href="contact_section.css">
     <link rel="stylesheet" href="card_vizita.css">
+    <link rel="stylesheet" href="footer.css">
 
     <script src="script.js" defer></script>
     <script src="emailJS.js" defer></script>
@@ -68,9 +69,26 @@
 
         <div class="hero-right" aria-hidden="false">
 
-          <div class="block reveal" data-reveal-delay="80">
+           <div class="block reveal" data-reveal-delay="80">
             <img src="poze/p_o_1.png" loading="lazy" alt="descriere" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" >
+          </div> 
+
+          <div class="image-wrapper">
+              <img src="poze/p_o_1.png" alt="descriere" class="info-image" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+
+              <!-- Colț pliat (va fi vizibil doar pe telefon) -->
+              <div class="corner-fold"></div>
+              <span class="corner-text">Descoperă</span>
+
+              <!-- Overlay cu informații -->
+              <div class="info-overlay">
+                <h3>Detalii Magic Mirror</h3>
+                <p>• Ecran tactil interactiv</p>
+                <p>• Cameră cu rezoluție înaltă</p>
+                <p>• Imprimantă instant inclusă</p>
+              </div>
           </div>
+
 
           <div class="block reveal" data-reveal-delay="120">
               <img src="poze/p_o_2.jpg" loading="lazy" alt="descriere" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" >
@@ -83,7 +101,7 @@
 
       <!-- ABOUT -->
       <section id="despre" class="reveal">
-        <h2>Fundalurile noastre</h2>
+        <h2>⭐ Fundalurile noastre</h2>
         <p class="muted" style="margin-top:6px">Alegerea Magic Mirror la evenimentul tău va crea distracție și amuzament pentru toți invitații, amintiri unice sub formă de fotografii tipărite pe loc, care pot servi și drept mărturii, precum și interacțiune socială între invitați. De asemenea, oferă un flux suplimentar de fotografii (diferite de cele ale fotografului) și permite partajarea rapidă a fotografiilor pe rețelele sociale.  </p>
 
         <div style="height:12px"></div> 
@@ -348,7 +366,39 @@
 
     </div>
 
-    <a href="https://wa.me/+40740513413" class="whatsapp-button" target="_blank" aria-label="Contactează-ne pe WhatsApp"> <i class="fa-brands fa-whatsapp"></i> </a>
+      <footer class="footer">
+          <div class="footer-container">
+
+            <div class="footer-section">
+              <h3>Magic Mirror</h3>
+              <p>O experiență foto modernă, interactivă și memorabilă.</p>
+            </div>
+
+            <div class="footer-section">
+              <h4>Contact</h4>
+              <ul>
+                <li><strong>Telefon:</strong> 0740 513 413</li>
+                <li><strong>Email:</strong> cezar_xp13@yahoo.com</li>
+                <li><strong>Locație:</strong> Botoșani, România</li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Social</h4>
+              <div class="footer-social">
+                <a href="https://www.facebook.com/people/Maggic-Mirror-more/100069317603118/?locale=ro_RO">Facebook</a>
+              </div>
+            </div>
+
+        </div>
+
+          <div class="footer-bottom">
+            <p>© <span id="year"></span> Magic Mirror • Toate drepturile rezervate</p>
+          </div>
+      </footer>
+
+
+      <a href="https://wa.me/+40740513413" class="whatsapp-button" target="_blank" aria-label="Contactează-ne pe WhatsApp"> <i class="fa-brands fa-whatsapp"></i> </a>
   
   </body>
 </html>

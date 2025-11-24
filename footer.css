@@ -1,0 +1,84 @@
+.footer {
+  background-color: #0d0d0d;
+  color: #f2f2f2;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+
+  /* -moz-border-radius: 0px; round corners only on top
+  -webkit-border-radius: 20px 20px 0px 0px;
+   border-radius: 20px 20px 0px 0px;  */
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 25px;
+
+}
+
+/* titluri */
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* text */
+.footer-section p,
+.footer-section li,
+.footer-bottom p {
+  font-size: 0.95rem;
+  line-height: 1.4rem;
+  opacity: 0.9;
+}
+
+/* liste */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 6px;
+}
+
+/* Social links */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-social a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.footer-social a:hover {
+  opacity: 1;
+}
+
+/* partea de jos */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* 🔥 Responsive (telefon → super compact) */
+@media (min-width: 600px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-section {
+    text-align: left;
+  }
+}

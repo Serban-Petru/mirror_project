@@ -224,3 +224,28 @@ setInterval(changeWord, 2500);
 
 
 //flip header text
+
+
+//pila imagine colt
+
+
+  const wrapper = document.querySelector(".image-wrapper");
+  const overlay = document.querySelector(".info-overlay");
+
+  function isMobile() {
+    return window.matchMedia("(max-width: 768px)").matches;
+  }
+
+  wrapper.addEventListener("click", () => {
+    if (!isMobile()) return; // ❗ NU permite overlay pe desktop
+
+    if (overlay.style.opacity === "1") {
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    } else {
+      overlay.style.opacity = "1";
+      overlay.style.pointerEvents = "auto";
+    }
+  });
+
+//pila imagine colt
