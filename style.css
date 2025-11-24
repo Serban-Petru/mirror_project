@@ -101,11 +101,11 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
       color:inherit;
     }
     .logo{
-      width:48px;height:48px;border-radius:10px;
+      width:60px;height:60px;border-radius:10px;
       background:linear-gradient(135deg,var(--accent), #4bd0ff);
       box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 -6px 15px rgba(255,255,255,0.06);
       display:flex;align-items:center;justify-content:center;
-      font-weight:700;color:#042024;
+      /* font-weight:700;color:#042024; */
     }
     nav .links{
       margin-left:auto;
@@ -234,7 +234,7 @@ background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.7), tran
       .hero-right{ grid-template-columns: 1fr; }
       .hero-left{ padding:18px }
       header{ padding:8px }
-      .logo{ width:40px;height:40px }
+      .logo{ width:50px;height:50px }
     }
 
     /* scroll reveal initial state */
